@@ -37,18 +37,30 @@ const main = () => {
    * Cargamos las peredes.
    *
    */
-  LoadWalls(scene,renderer);
+  LoadWalls(scene);
 
   /**
    * Piso
    */
-  const floor = new THREE.GridHelper(100, 100);
-  scene.add(floor);
+  //const floor = new THREE.GridHelper(100, 100);
+  //scene.add(floor);
+
+  const floor = new THREE.BoxGeometry(17, 0.2, 18);
+  const texture = new THREE.TextureLoader().load("img/roca-ama.jpg");
+  let material2 = new THREE.MeshPhongMaterial({ map: texture });
+  const cube = new THREE.Mesh(floor, material2);
+  cube.receiveShadow = true;
+  cube.position.x = 17 / 2;
+  cube.position.z = 18 / 2;
+  cube.position.y = 0.1;
+  cube.castShadow = true;
+  cube.receiveShadow = true;
+  scene.add(cube);
   /**
    * Piso
    */
   const geometry = new THREE.PlaneGeometry(100, 100, 10);
-  const material = new THREE.MeshPhongMaterial({ color: 0xffffff });
+  const material = new THREE.MeshPhongMaterial({ color: 0x666666 });
   const floor2 = new THREE.Mesh(geometry, material);
   floor2.receiveShadow = true;
   floor2.castShadow = true;

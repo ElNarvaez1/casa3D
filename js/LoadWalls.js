@@ -2,7 +2,7 @@
  * Funcion para poder cargar las paredes de las casas.
  * 
  */
-const LoadWalls = (scene,render) =>{
+const LoadWalls = (scene) =>{
     /**
      * Recorremos el arreglo de muros
      */
@@ -28,7 +28,7 @@ const LoadWalls = (scene,render) =>{
                   let z = row - prof / 2;
     
                   const geometry = new THREE.BoxGeometry(width, height, prof);
-                  const material = setTexture(row, column, 1, "H",render);
+                  const material = setTexture(row, column, 1, "H");
                   const cube = new THREE.Mesh(geometry, material);
                   cube.position.x = x;
                   cube.position.z = z;
@@ -48,7 +48,7 @@ const LoadWalls = (scene,render) =>{
                   let z = row - prof / 2;
     
                   const geometry = new THREE.BoxGeometry(width, height, prof);
-                  const material = setTexture(row, column, 1, "V",render);
+                  const material = setTexture(row, column, 1, "V");
                   const cube = new THREE.Mesh(geometry, material);
                   cube.position.x = x;
                   cube.position.z = z;
@@ -75,7 +75,7 @@ const LoadWalls = (scene,render) =>{
                   let z = row - prof / 2;
     
                   const geometry = new THREE.BoxGeometry(width, height, prof);
-                  const material = setTexture(row, column, 1, "H",render);
+                  const material = setTexture(row, column, 1, "H");
                   const cube = new THREE.Mesh(geometry, material);
                   cube.position.x = x;
                   cube.position.z = z;
@@ -86,7 +86,7 @@ const LoadWalls = (scene,render) =>{
     
                   //seccion de la ventana de abajo
                   const geometryBottom = new THREE.BoxGeometry(width, height, prof);
-                  const materialBottom = setTexture(row, column, 1, "H",render);
+                  const materialBottom = setTexture(row, column, 1, "H");
                   const cubeBottom = new THREE.Mesh(geometryBottom, materialBottom);
                   cubeBottom.position.x = x;
                   cubeBottom.position.z = z;
@@ -182,7 +182,7 @@ const LoadWalls = (scene,render) =>{
                   let z = row - prof / 2;
     
                   const geometry = new THREE.BoxGeometry(width, height, prof);
-                  const material = setTexture(row, column, 1, "H",render);
+                  const material = setTexture(row, column, 1, "H");
                   //const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
                   const cube = new THREE.Mesh(geometry, material);
                   cube.position.x = x;
@@ -204,7 +204,7 @@ const LoadWalls = (scene,render) =>{
                   let z = row - prof / 2;
     
                   const geometry = new THREE.BoxGeometry(width, height, prof);
-                  const material = setTexture(row, column, 1, "V",render);
+                  const material = setTexture(row, column, 1, "V");
                   const cube = new THREE.Mesh(geometry, material);
                   cube.position.x = x;
                   cube.position.z = z;

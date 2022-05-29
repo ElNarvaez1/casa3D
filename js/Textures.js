@@ -5,15 +5,14 @@
  * @param column Columna
  * @param type Para saber si es una pared, venta o puerta
  * @param orientation La orientacion horizontal o vertical
- * @param render Objeto encargado de renderizar las cosas.
  */
- const setTexture = (row, column, type, orientation,render,scene) => {
+ const setTexture = (row, column, type, orientation) => {
     let texture;
     let material = new THREE.MeshPhongMaterial({ color: 0xffffff });
     //Colocamos la textura de la piedra gris
     if ((row == 5 || row == 8) && orientation == "H") {
-      //texture = new THREE.TextureLoader().load("img/roca.jpg");
-      texture = new THREE.ImageUtils.loadTexture('img/roca.jpg',{},function() { render.render(scene); });
+      texture = new THREE.TextureLoader().load("img/roca.jpg");
+      //texture = new THREE.ImageUtils.loadTexture('img/roca.jpg',{},function() { render.render(scene); });
       material = new THREE.MeshPhongMaterial({ map: texture });
     }
     //Colocamos la textura de la roca amarilla
