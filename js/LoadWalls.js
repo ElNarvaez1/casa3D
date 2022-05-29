@@ -47,8 +47,8 @@ const LoadWalls = (scene) =>{
                   let x = column == 0 ? width / 2 : column - prof;
                   let z = row - prof / 2;
     
-                  const geometry = new THREE.BoxGeometry(width, height, prof);
                   const material = setTexture(row, column, 1, "V");
+                  const geometry = new THREE.BoxGeometry(width, height, prof);
                   const cube = new THREE.Mesh(geometry, material);
                   cube.position.x = x;
                   cube.position.z = z;

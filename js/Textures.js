@@ -45,6 +45,11 @@
         material = new THREE.MeshPhongMaterial({ color: 0xa93226 });
       }
     }
+
+    //Pared roja d ela sala
+    if(row >= 9 && row<= 18 && column == 0 && orientation == "V"){
+        material = new THREE.MeshPhongMaterial({ color: 0xa93226 });
+    }
   
     return material;
   };

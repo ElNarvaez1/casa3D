@@ -15,6 +15,10 @@ const main = () => {
   camera.position.y = 10;
   camera.lookAt(scene.position);
 
+  const spotLight = new THREE.SpotLight(0xffffff);
+  spotLight.position.set(20, 20, 20);
+  scene.add(spotLight);
+
   /**
    * Objeto encargado de pintar en la ESCENA
    */
@@ -67,23 +71,34 @@ const main = () => {
   floor2.rotation.x = -Math.PI / 2;
   scene.add(floor2);
 
+  //luz de ambiente
+  scene.add(new THREE.AmbientLight(0xffffff, 0.2));
   scene.background = new THREE.Color(0xffffff);
 
+  let directionalLight = new THREE.DirectionalLight(0xffffff, 0.9);
+  directionalLight.position.set(5,5,5); 
+  //directionalLight.shadow.camera.position.set(20, 20, 20); 
+  directionalLight.castShadow = true;
+  directionalLight.shadow.mapSize.width = 512;
+  directionalLight.shadow.mapSize.height = 512;
+
+  directionalLight.shadow.camera.near = 0.5;
+  directionalLight.shadow.camera.far = 10;
+  directionalLight.shadow.camera.top += 10;
+  directionalLight.shadow.camera.botton -= 10;
+  directionalLight.shadow.camera.left -= 10;
+  directionalLight.shadow.camera.right += 10;
+
+  scene.add(directionalLight);
+
+  //Camara de la luz
+  scene.add(new THREE.DirectionalLightHelper(directionalLight,1));
+  //scene.add(new THREE.CameraHelper(directionalLight.shadow.camera));
   /**
    * Ejes
    */
   const axisHelper = new THREE.AxesHelper(100);
   scene.add(axisHelper);
-
-  //Luces
-  scene.add(new THREE.AmbientLight(0xffffff, 0.9));
-
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.9);
-  directionalLight.position.x += 20;
-  directionalLight.position.y += 20;
-  directionalLight.position.z += 20;
-  directionalLight.castShadow = true;
-  scene.add(directionalLight);
 
   const animate = () => {
     controls.update(0.01);
