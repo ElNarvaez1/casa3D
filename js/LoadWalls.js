@@ -6,21 +6,21 @@ const LoadWalls = (scene) =>{
     /**
      * Recorremos el arreglo de muros
      */
-     for (let row = 0; row < walls.length; row++) {
-        for (let column = 0; column < walls[row].length; column++) {
+     for (let row = 0; row < WALLS.length; row++) {
+        for (let column = 0; column < WALLS[row].length; column++) {
           /**
            *Para saber si es una puerta,venta, pared o la nada.
            */
-          const tipo = walls[row][column];
+          const tipo = WALLS[row][column];
           switch (tipo) {
             case 1:
               //Pared
               /**
                * Necesitamos saber si es una pared es horizontal o vertical
                */
-              if (column >= 0 && column != walls[row].length - 1) {
+              if (column >= 0 && column != WALLS[row].length - 1) {
                 //Horizontales
-                if (walls[row][column + 1] != 0 || (column == 6 && row == 8)) {
+                if (WALLS[row][column + 1] != 0 || (column == 6 && row == 8)) {
                   let width = 1;
                   let height = 5;
                   let prof = 0.2;
@@ -38,9 +38,9 @@ const LoadWalls = (scene) =>{
                   scene.add(cube);
                 }
               }
-              if (row > 0 && row != walls[row].length) {
+              if (row > 0 && row != WALLS[row].length) {
                 //Verticales
-                if (walls[row - 1][column] != 0) {
+                if (WALLS[row - 1][column] != 0) {
                   let width = 0.2;
                   let height = 5;
                   let prof = 1;
@@ -64,9 +64,9 @@ const LoadWalls = (scene) =>{
               /**
                * Necesitamos saber si es una ventana en  vertical o horizontal
                */
-              if (column >= 0 && column != walls[row].length - 1) {
+              if (column >= 0 && column != WALLS[row].length - 1) {
                 //Horizontales
-                if (walls[row][column + 1] != 0 || (column == 6 && row == 8)) {
+                if (WALLS[row][column + 1] != 0 || (column == 6 && row == 8)) {
                   // seccion de la ventana de arriba
                   let width = 1;
                   let height = 1;
@@ -112,9 +112,9 @@ const LoadWalls = (scene) =>{
     
                 }
               }
-              if (row > 0 && row != walls[row].length) {
+              if (row > 0 && row != WALLS[row].length) {
                 //Verticales
-                if (walls[row - 1][column] != 0) {
+                if (WALLS[row - 1][column] != 0) {
                   // seccion de la ventana de arriba
                   let width = 0.2;
                   let height = 1;
@@ -171,9 +171,9 @@ const LoadWalls = (scene) =>{
               /**
                * Necesitamos saber si es una puerta en  vertical o horizontal
                */
-              if (column >= 0 && column != walls[row].length - 1) {
+              if (column >= 0 && column != WALLS[row].length - 1) {
                 //Horizontales
-                if (walls[row][column + 1] != 0 || (column == 6 && row == 8)) {
+                if (WALLS[row][column + 1] != 0 || (column == 6 && row == 8)) {
                   // seccion de la puerta de arriba
                   let width = 1;
                   let height = 1;
@@ -193,9 +193,9 @@ const LoadWalls = (scene) =>{
                   scene.add(cube);
                 }
               }
-              if (row > 0 && row != walls[row].length) {
+              if (row > 0 && row != WALLS[row].length) {
                 //Verticales
-                if (walls[row - 1][column] != 0) {
+                if (WALLS[row - 1][column] != 0) {
                   // seccion de la puerta de arriba
                   let width = 0.2;
                   let height = 1;
@@ -222,20 +222,5 @@ const LoadWalls = (scene) =>{
               break;
           }
         }
-    
-        /**
-           * Creamos una geometria, para dibujar un cubo.
-    
-          const geometry = new THREE.BoxGeometry(
-                                      walls[index].width, 
-                                      walls[index].height, 
-                                      walls[index].profundo);
-          const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-          const cube = new THREE.Mesh(geometry, material);
-          cube.position.x = walls[index].x;
-          cube.position.z = walls[index].z;
-          cube.position.y = walls[index].y;
-          scene.add(cube);
-        */
       }
 }

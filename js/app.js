@@ -12,7 +12,7 @@ const main = () => {
       0.1,
       1000
     );
-    camera.position.y = 5;
+    camera.position.y = 10;
     camera.lookAt(scene.position);
     
     /**
@@ -26,8 +26,13 @@ const main = () => {
     /**
      * Objeto encargfado de mover la camara
      */
-    const controls = new THREE.OrbitControls(camera, renderer.domElement);
-  
+    const controls = new THREE.FirstPersonControls(camera, renderer.domElement);
+    controls.lookSpeed = 0.05;
+  controls.movementSpeed = 50;
+  controls.lookVertical = true;
+  controls.mouseDragOn = true;
+  controls.heightMin = 4;
+  controls.heightMax = 5;
     /**
      * Cargamos las peredes.
      * 
@@ -37,8 +42,8 @@ const main = () => {
     /**
      * Piso
      */
-    //const floor = new THREE.GridHelper(100, 100);
-    //scene.add(floor);
+    const floor = new THREE.GridHelper(100, 100);
+    scene.add(floor);
     /**
      * Piso
      */
@@ -69,7 +74,7 @@ const main = () => {
     scene.add(directionalLight);
   
     const animate = () => {
-      controls.update();
+      controls.update(0.01);
       renderer.render(scene, camera);
       requestAnimationFrame(animate);
     };
